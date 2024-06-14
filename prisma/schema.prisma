@@ -12,3 +12,25 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        String   @id
+  email     String   @unique
+  password  String
+  fullName  String
+  phone     String
+  createdAt DateTime @default(now()) @map("_createdAt")
+
+  @@map("users")
+}
+
+model Movie {
+  id          String   @id @default(uuid())
+  title       String
+  director    String
+  releaseDate DateTime
+  rating      Float
+  createdAt   DateTime @default(now()) @map("_createdAt")
+
+  @@map("movies")
+}
