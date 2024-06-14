@@ -13,7 +13,14 @@ export class MoviesService {
 
   async create(createMovieDto: CreateMovieDto) {
     await this.findUniqueMovieTitle(createMovieDto.title);
-    const movie = await this.prisma.movie.create({ data: createMovieDto });
+    const movie = await this.prisma.movie.create({
+      data: {
+        title: createMovieDto.title,
+        director: createMovieDto.director,
+        releaseDate: new Date(createMovieDto.releaseDate),
+        rating: createMovieDto.rating,
+      },
+    });
     return movie;
   }
 
@@ -34,7 +41,12 @@ export class MoviesService {
     await this.findMovieOrError(id);
     const updatedMovie = await this.prisma.movie.update({
       where: { id },
-      data: updateMovieDto,
+      data: {
+        title: updateMovieDto.title,
+        director: updateMovieDto.director,
+        releaseDate: new Date(updateMovieDto.releaseDate),
+        rating: updateMovieDto.rating,
+      },
     });
     return updatedMovie;
   }

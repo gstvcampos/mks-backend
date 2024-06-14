@@ -1,5 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsDateString,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  Max,
+  Min,
+} from 'class-validator';
 
 export class CreateMovieDto {
   @ApiProperty({
@@ -23,8 +30,8 @@ export class CreateMovieDto {
     example: '1994-09-22',
   })
   @IsNotEmpty()
-  @IsDate()
-  releaseDate: Date;
+  @IsDateString()
+  releaseDate: string;
 
   @ApiProperty({
     description: 'Movie rating',
@@ -32,5 +39,7 @@ export class CreateMovieDto {
   })
   @IsNotEmpty()
   @IsNumber()
+  @Min(1)
+  @Max(10)
   rating: number;
 }
