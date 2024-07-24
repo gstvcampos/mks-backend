@@ -18,4 +18,4 @@ Este projeto é uma aplicação que permite o cadastro de usuários e filmes
 7. Então crie as migrações "npx prisma migrate dev"
 8. Execute o comando "npm run start:dev" para iniciar o servidor em modo de desenvolvimento
 
-[Link da Documentação](https://mks-backend-6ofx.onrender.com/api)
+[Link da Documentação](https://mks-backend-dlms.onrender.com/api)
